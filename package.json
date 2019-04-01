@@ -4,8 +4,10 @@
   "description": "blockchain",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "prestart": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "zerobell-lee",
   "license": "ISC"
 }
