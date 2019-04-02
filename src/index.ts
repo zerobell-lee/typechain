@@ -1,14 +1,15 @@
-interface Human {
-    name: string;
-    age: number;
-    gender: string;
-}
-
-const person = {
-    name: "zerobell-lee",
-    age: 25,
-    gender: "male"
+class Human {
+    public name: string;
+    public age: number;
+    public gender: string;
+    constructor(name: string, age: number, gender: string) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
 };
+
+const oliviaHye = new Human("Son Hye Joo", 18, "female");
 
 const sayHi = (human: Human): string => {
     return `Hello ${human.name}, you are ${human.age} years old, and you are a ${human.gender}`;
@@ -21,6 +22,6 @@ const sayHi = (human: Human): string => {
 // tsc-watch는 global로 설치한 typescript를 인식하지 못한다. 그래서 typescript를 로컬로 다시 설치해줘야한다.
 // interface는 말 그대로 인터페이스. 자바의 그 interface와 약간 유사하다고 보면 되겠다. object의 청사진.
 
-console.log(sayHi(person));
+console.log(sayHi(oliviaHye));
 
 export {};
