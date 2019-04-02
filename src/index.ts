@@ -35,14 +35,14 @@ const getBlockchain = (): Block[] => blockchain;
 const getLatestBlock = (): Block => blockchain[blockchain.length - 1];
 const getNewTimestamp = (): number => Math.round(new Date().getTime()/1000);
 
-const createNewBlock = (data: string): Block => {
+const createNewBlock = (data: string): void => {
     const previousBlock: Block = getLatestBlock();
     const newIndex: number = previousBlock.index + 1;
     const newTimeStamp: number = getNewTimestamp();
     const newHash: string = Block.calculateBlockHash(newIndex, previousBlock.hash, newTimeStamp, data);
     const newBlock: Block = new Block(newIndex, newHash, previousBlock.hash, data, newTimeStamp);
 
-    return newBlock;
+    addBlock(newBlock);
 }
 
 const getHashforBlock = (block: Block): string => Block.calculateBlockHash(block.index, block.previousHash, block.timestamp, block.data);
@@ -67,8 +67,9 @@ const addBlock = (candidate: Block): void => {
     }
 }
 
-blockchain.push(createNewBlock("hello"));
-blockchain.push(createNewBlock("bye"));
+createNewBlock("second block");
+createNewBlock("third block");
+createNewBlock("fourth block");
 
 console.log(blockchain);
 
