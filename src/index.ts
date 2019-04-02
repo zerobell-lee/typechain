@@ -1,27 +1,22 @@
-class Human {
-    public name: string;
-    public age: number;
-    public gender: string;
-    constructor(name: string, age: number, gender: string) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
+class Block {
+    public index: number;
+    public hash: string;
+    public previousHash: string;
+    public data: string;
+    public timestamp: number;
+    constructor(index: number, hash: string, previousHash: string, data: string, timestamp: number) {
+        this.index = index;
+        this.hash = hash;
+        this.previousHash = previousHash;
+        this.data = data;
+        this.timestamp = timestamp;
     }
-};
+}
 
-const oliviaHye = new Human("Son Hye Joo", 18, "female");
+const genesisBlock = new Block(0, "2020220023920392039", "", "Hello", 123456);
 
-const sayHi = (human: Human): string => {
-    return `Hello ${human.name}, you are ${human.age} years old, and you are a ${human.gender}`;
-};
+let blockchain: [Block] = [genesisBlock];
 
-// 함수 선언에서 ?를 넣어주면 optional 인자로 받아들인다.
-// typescript는 컴파일 시에 타입 검사를 실시한다. 그러므로 gender?나 gender를 넣어주지 않고 아래를 실행하면 에러를 뱉는다.
-// 변수명 오른쪽에 : 를 삽입하면 타입 지정이 가능하다.
-
-// tsc-watch는 global로 설치한 typescript를 인식하지 못한다. 그래서 typescript를 로컬로 다시 설치해줘야한다.
-// interface는 말 그대로 인터페이스. 자바의 그 interface와 약간 유사하다고 보면 되겠다. object의 청사진.
-
-console.log(sayHi(oliviaHye));
+console.log(blockchain);
 
 export {};
